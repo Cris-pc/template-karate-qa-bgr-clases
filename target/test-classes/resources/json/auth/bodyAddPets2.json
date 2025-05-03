@@ -1,0 +1,17 @@
+{
+  "id": 2123,
+  "category":
+  {
+  "id": 2123,
+  "name": "#(name1)"
+  },
+   "name": "doggie",
+  "photoUrls": ["string"],
+"tags": [
+  {
+   "id": 2123,
+   "name": "#(name1)"
+  }
+ ],
+  "status": "#(status)"
+ }
