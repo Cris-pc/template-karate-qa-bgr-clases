@@ -7,7 +7,7 @@ Feature: Certificar el servicio https://petstore.swagger.io/#/user/createUser to
     * header Content-Type = "application/json"
     
 
-  Scenario Outline: Creacion de accesorio para pet store con data driven.
+  Scenario Outline: Creacion de usuario.
     Given path '/v2/store/order'
     And request body
     When method POST
