@@ -1,24 +1,23 @@
-Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io/
+Feature: Flujo e2e generar token
 
+  Background:
+    * header Content-Type = "application/json"
 
-
-  @name=loginprod1
-  Scenario: caso 15 login exitoso
-    * header x-api-key = "reqres-free-v1"
+  @TOKEN
+  Scenario: Api que genera token https://student.geekqa.net/api/login
     * def body =
     """
-    {
-      "email": "eve.holt@reqres.in",
-     "password": "cityslicka"
-    }
+     {
+        "email": "geekqa@test.com",
+        "password": "geekqa2025"
+      }
     """
-    Given url 'https://reqres.in'
+    Given url 'https://student.geekqa.net'
     And path '/api/login'
     And request body
-    When method post
+    When method POST
     Then status 200
     * print response
-    And match response.token == "#string"
-    * def autoken = response.token
+    * def autoken = response.access_token
     * print autoken
 

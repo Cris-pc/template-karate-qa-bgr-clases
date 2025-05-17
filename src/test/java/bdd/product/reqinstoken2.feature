@@ -2,14 +2,22 @@ Feature: Certificar ends point resques in
 
 
   Background:
-    * def responselogin = call read('reqinstoken.feature@name=loginprod1')
+    * def responselogin = call read('reqinstoken.feature@TOKEN')
     * def obtenertoken = responselogin.autoken
     * print obtenertoken
-    * url 'https://reqres.in'
-    * header Authorization = "Bearer " + obtenertoken
+    * url 'https://student.geekqa.net'
+    * header Authorization = "Bearer" + obtenertoken
 
 
-  Scenario: caso 3 obtener token y verificar single user
-    Given path  '/api/users/2'
-    When method get
+  Scenario: Consulta de estudiante
+    Given path  '/api/students/46'
+    When method GET
+    * print response
+    Then status 200
+
+
+  Scenario: Consulta de busqueda de estudiante
+    Given path  '/api/students/'
+    When method GET
+    * print response
     Then status 200
