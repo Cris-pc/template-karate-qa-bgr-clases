@@ -1,3 +1,4 @@
+@e2eTotalWSuser
 Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io/
 
   Background:
@@ -14,7 +15,7 @@ Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io
       }
    """
 
-
+  @E2E @smoketest @metodoPost
   Scenario Outline: T - Cracion de usuario en el endpint 'https://petstore.swagger.io/
       Given path '/v2/user'
       And request body
@@ -24,7 +25,7 @@ Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io
       Examples:
         |read('classpath:resources/csv/auth/datadriveuser.csv')|
 
-
+    @smoketest
     Scenario: T - Certificar el servicio consulta con usuario antes creado
       * call tiempo_espera 4
       Given path '/v2/user/CRIS'
@@ -35,7 +36,7 @@ Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io
       And match response.email == '#string'
       Then status 200
 
-
+  @E2E
    Scenario Outline: T - Certificar el servicio update del usuario antes creado.
      Given path '/v2/user/CRIS'
      And request body
@@ -46,8 +47,7 @@ Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io
      Then status 200
      Examples:
        |read('classpath:resources/csv/auth/datadriveuserupdate.csv')|
-
-
+  @E2E
   Scenario: T - Certificar el servicio DELETE del usuario antes ACTUALIZADO.
     Given path '/v2/user/EDUARDO'
     When method DELETE
@@ -60,3 +60,4 @@ Feature: Flujo e2e servicio usuario en el end point 'https://petstore.swagger.io
     When method GET
     * print response
     Then status 404
+

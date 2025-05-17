@@ -32,8 +32,8 @@
             <artifactId>commons-io</artifactId>
             <version>2.14.0</version>
         </dependency>
-
     </dependencies>
+
     <build>
         <testResources>
             <testResource>
